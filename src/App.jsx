@@ -8,13 +8,14 @@ import { Navigate } from "react-router-dom";
 function App() {
   const [email, setEmail] = useState("");
   const [valid, setValid] = useState(null);
+  const baseURL = '/NewsLetterSignup2';
 
   return (
     <>
       <div className="app">
         <Routes>
           <Route
-            path="/"
+            path={`${baseURL}/`}
             element={
               !valid ? (
                 <Home
@@ -24,17 +25,17 @@ function App() {
                   setValid={setValid}
                 />
               ) : (
-                <Navigate to="/msg" />
+                <Navigate to={`${baseURL}/msg`} />
               )
             }
           />
           <Route
-            path="/msg"
+            path={`${baseURL}/msg`}
             element={
               valid ? (
                 <ThankYouMsg setValid={setValid} email={email} />
               ) : (
-                <Navigate to="/" />
+                <Navigate to={`${baseURL}/`} />
               )
             }
           />
